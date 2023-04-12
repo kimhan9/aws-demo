@@ -1,0 +1,83 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowViewAccountInfo",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetAccountPasswordPolicy",
+                "iam:GetAccountSummary",
+                "iam:ListUsers",
+                "iam:ListVirtualMFADevices"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowViewOwnCredentials",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListSSHPublicKeys",
+                "iam:GetSSHPublicKey",
+                "iam:GetAccessKeyLastUsed",
+                "iam:ListServiceSpecificCredentials",
+                "iam:ListMFADevices",
+                "iam:GetUser",
+                "iam:ListSigningCertificates",
+                "iam:ListAccessKeys",
+                "iam:ListUserTags"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
+        },
+        {
+            "Sid": "AllowManageOwnPasswords",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ChangePassword",
+                "iam:GetUser",
+                "iam:GetLoginProfile",
+                "iam:UpdateLoginProfile"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
+        },
+        {
+            "Sid": "AllowManageOwnAccessKeys",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateAccessKey",
+                "iam:DeleteAccessKey",
+                "iam:ListAccessKeys",
+                "iam:UpdateAccessKey"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
+        },
+        {
+            "Sid": "AllowManageOwnSSHPublicKeys",
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeleteSSHPublicKey",
+                "iam:GetSSHPublicKey",
+                "iam:ListSSHPublicKeys",
+                "iam:UpdateSSHPublicKey",
+                "iam:UploadSSHPublicKey"
+            ],
+            "Resource": "arn:aws:iam::*:user/${aws:username}"
+        },
+        {
+            "Sid": "AllowManageOwnUserMFA",
+            "Effect": "Allow",
+            "Action": [
+                "iam:DeactivateMFADevice",
+                "iam:DeleteVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:GetUser",
+                "iam:ListMFADevices",
+                "iam:ResyncMFADevice",
+                "iam:CreateVirtualMFADevice"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:user/${aws:username}",
+                "arn:aws:iam::*:mfa/*"
+            ]
+        }
+    ]
+}
