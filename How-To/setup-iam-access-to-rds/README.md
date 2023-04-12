@@ -53,5 +53,7 @@ mysql -vv --host=$RDSHOST --port=3306 --ssl-ca=/fullpathtopem/ap-southeast-1-bun
 
 ##### References
 [1] - [AWS Docs - IAM database authentication for MariaDB, MySQL, and PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.html)
+
 [2] - [AWS re:Post - Amazon RDS with IAM credentials](https://aws.amazon.com/premiumsupport/knowledge-center/users-connect-rds-iam/)
+
 [3] - [miztiik - IAM Database Authentication for MySQL](https://github.com/miztiik/AWS-Demos/tree/master/How-To/setup-iam-access-to-rds/)
