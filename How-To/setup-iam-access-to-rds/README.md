@@ -45,8 +45,9 @@ wget https://truststore.pki.rds.amazonaws.com/ap-southeast-1/ap-southeast-1-bund
 You have to generate authentication token first to use to connect to DB. The Authentication tokens have a lifespan of 15 minutes.
 ```sh
 RDSHOST="myrds.ap-southeast-1.rds.amazonaws.com"
-TOKEN="$(aws rds generate-db-auth-token --hostname $RDSHOST --port 3306 --region ap-southeast-1 --username {dbusername})"
-mysql --host=$RDSHOST --port=3306 --ssl-ca=/fullpathtopem/ap-southeast-1-bundle.pem --ssl-mode=VERIFY_CA --enable-cleartext-plugin --user={dbusername} --password=$TOKEN
+DBUSERNAME={dbusername}
+TOKEN="$(aws rds generate-db-auth-token --hostname $RDSHOST --port 3306 --region ap-southeast-1 --username $DBUSERNAME)"
+mysql --host=$RDSHOST --port=3306 --ssl-ca=/fullpathtopem/ap-southeast-1-bundle.pem --ssl-mode=VERIFY_CA --enable-cleartext-plugin --user=$DBUSERNAME --password=$TOKEN
 
 ```
 
