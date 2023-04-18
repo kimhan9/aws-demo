@@ -51,6 +51,14 @@ mysql --host=$RDSHOST --port=3306 --ssl-ca=/fullpathtopem/ap-southeast-1-bundle.
 
 ```
 
+### Note
+1. It has tested with mysql cli successfully. For othe mysql client, please read their documentation.
+1. The username do not have to be same as AWS account.
+1. User still can login using traditional username/password. However another new user need create for login using IAM authentication.
+1. User has to login using RDS given endpoint. Alternative DNS name like do not work.
+1. The Authentication tokens have a lifespan of 15 minutes.
+1. In general, consider using IAM database authentication when your applications create fewer than 200 connections per second, and you don't want to manage usernames and passwords directly in your application code.
+
 
 ##### References
 [1] - [AWS Docs - IAM database authentication for MariaDB, MySQL, and PostgreSQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Connecting.html)
